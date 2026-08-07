@@ -25,6 +25,9 @@ install_ops_log_from_env();
 - Generated topic helpers for Photon self-metrics (`*Recorder` / `*Logger`, payloads)
 - `install_ops_log_from_env` / `SpectraOpsLog` for host bootstrap
 
+## Examples
+
+Runnable smoke: [examples/README.md](examples/README.md).
 ## Verify
 
 ```bash
