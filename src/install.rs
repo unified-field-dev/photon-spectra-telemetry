@@ -55,9 +55,15 @@ impl OpsLog for SpectraOpsLog {
 
 /// Install process-wide Photon ops log from `PHOTON_TELEMETRY`.
 ///
-/// - `off` | `0` | `false` | `none` → [`NoOpsLog`]
-/// - `console` → [`ConsoleOpsLog`]
-/// - default (including `spectra`) → [`SpectraOpsLog`] when Spectra sink is configured
+/// Contract:
+///
+/// - **When to call** — once per process, before building the Photon runtime (after Spectra's
+///   own sink is configured when using default-to-Spectra mode).
+/// - **Env values** — `off` / `0` / `false` / `none` → [`NoOpsLog`]; `console` →
+///   [`ConsoleOpsLog`]; unset or `spectra` → [`SpectraOpsLog`] (may no-op when Spectra is
+///   unconfigured).
+/// - **Idempotency** — replaces the process-wide `OpsLog` on each call; hosts should not call
+///   from hot paths.
 ///
 /// # Examples
 ///
@@ -67,6 +73,8 @@ impl OpsLog for SpectraOpsLog {
 /// // Prefer setting `PHOTON_TELEMETRY` in the process environment before calling.
 /// install_ops_log_from_env();
 /// ```
+///
+/// See also `cargo run -p photon-spectra-telemetry --example ops_log_smoke`.
 pub fn install_ops_log_from_env() {
     let log: Arc<dyn OpsLog> = match std::env::var("PHOTON_TELEMETRY")
         .ok()

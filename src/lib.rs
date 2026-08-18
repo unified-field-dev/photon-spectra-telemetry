@@ -32,7 +32,9 @@
 //!
 //! | Concern | API |
 //! |---|---|
-//! | Install | [`install_ops_log_from_env`] / [`SpectraOpsLog`] |
+//! | Install process-wide `OpsLog` | [`install_ops_log_from_env`] / [`SpectraOpsLog`] |
+//! | Typed counters / gauges / events | [`helpers`] (`*Recorder`, `*Logger`) |
+//! | Transport DTOs + topic constants | [`topics`] (`*Payload`, `*_TOPIC`) |
 //!
 //! Labels for Photon's counters/gauges are supplied by callers via the `OpsLog::record_counter`
 //! / `record_gauge` label slices; this crate has no dedicated label types.
@@ -73,6 +75,8 @@
 //! // ... build and run your Photon host; Photon's own publish/drain/backlog events now
 //! // flow through Spectra automatically.
 //! ```
+//!
+//! Runnable: `cargo run -p photon-spectra-telemetry --example ops_log_smoke`.
 //!
 //! ## Where to look next
 //!
