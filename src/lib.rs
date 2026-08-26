@@ -15,10 +15,10 @@
 //!
 //! ## Features
 //!
-//! - **Env-driven install** — Reads `PHOTON_TELEMETRY` at host boot and installs the matching
+//! - **Env-resolved telemetry install** — Reads `PHOTON_TELEMETRY` at host boot and installs the matching
 //!   process-wide `OpsLog` before the Photon runtime starts.
 //!   [Get started](#env-driven-install)
-//! - **OpsLog install** — [`SpectraOpsLog`] implements [`photon_telemetry::OpsLog`] when you wire
+//! - **Spectra OpsLog adapter** — [`SpectraOpsLog`] implements [`photon_telemetry::OpsLog`] when you wire
 //!   the Spectra adapter yourself instead of using the env helper.
 //!   [Get started](#direct-ops-log)
 //! - **Topic + codegen helpers** — Generated `*Recorder` / `*Logger` / `*Payload` / `*_TOPIC`
