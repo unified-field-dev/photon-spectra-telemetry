@@ -118,7 +118,7 @@ fn topic_constants_are_non_empty_happy() {
         CONTINUUM_APPEND_WALL_MS_TOPIC,
         CONTINUUM_OP_WALL_MS_TOPIC,
     ] {
-        assert!(!topic.is_empty());
+        assert_ne!(topic, "");
         assert!(
             topic.starts_with("spectra.metric."),
             "unexpected metric topic: {topic}"
@@ -129,7 +129,7 @@ fn topic_constants_are_non_empty_happy() {
         );
     }
     for topic in [PHOTON_OPS_LOG_TOPIC, PHOTON_DLQ_LOG_TOPIC] {
-        assert!(!topic.is_empty());
+        assert_ne!(topic, "");
         assert!(
             topic.starts_with("spectra.event."),
             "unexpected event topic: {topic}"
